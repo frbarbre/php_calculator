@@ -24,12 +24,16 @@ function calculate()
     $num2 = $_POST['num2'];
     $operator = $_POST['operator'];
 
-    if (!$num1 || !$num2) {
+    if (!isset($num1) || !isset($num2)) {
         return "You need to fill in all fields!";
     }
 
     if (!is_numeric($num1) || !is_numeric($num2)) {
         return "You need to enter a valid number!";
+    }
+
+    if ($operator === "Divide" && $num2 == 0) {
+        return "You can't divide by zero!";
     }
 
     switch ($operator) {
